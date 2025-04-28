@@ -1,28 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all functionality
-  initNavigation();
+  // Set active navigation link
+  setActiveNavLink();
+  
+  // Initialize smooth scrolling
+  initSmoothScrolling();
+  
+  // Initialize animations
   initScrollAnimations();
+  
+  // Initialize typewriter effect
   initTypewriterEffect();
+  
+  // Initialize contact form
   initContactForm();
-  initFloatingElements();
 });
 
-// Navigation Controller
-const initNavigation = () => {
+// Set active navigation link based on current page
+function setActiveNavLink() {
+  const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
   const navLinks = document.querySelectorAll('nav a');
   
-  // Set active link based on current page
-  const currentPage = location.pathname.split('/').pop().split('.')[0] || 'index';
   navLinks.forEach(link => {
     const linkPage = link.getAttribute('href').split('.')[0];
     if (linkPage === currentPage) {
       link.classList.add('active');
     }
   });
-};
+}
 
-// Scroll Animations
-const initScrollAnimations = () => {
+// Smooth scrolling for anchor links
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Scroll animations
+function initScrollAnimations() {
   const animateOnScroll = () => {
     const elements = document.querySelectorAll('section, article');
     const windowHeight = window.innerHeight;
@@ -48,10 +75,10 @@ const initScrollAnimations = () => {
   // Run on load and scroll
   animateOnScroll();
   window.addEventListener('scroll', animateOnScroll);
-};
+}
 
-// Typewriter Effect for Hero Text
-const initTypewriterEffect = () => {
+// Typewriter effect for hero text
+function initTypewriterEffect() {
   const heroText = document.querySelector('.hero p');
   if (!heroText) return;
   
@@ -68,11 +95,11 @@ const initTypewriterEffect = () => {
   };
   
   setTimeout(type, 500);
-};
+}
 
-// Contact Form Handling
-const initContactForm = () => {
-  const contactForm = document.querySelector('form');
+// Contact form handling
+function initContactForm() {
+  const contactForm = document.querySelector('#contact-form');
   if (!contactForm) return;
   
   contactForm.addEventListener('submit', async (e) => {
@@ -101,25 +128,4 @@ const initContactForm = () => {
       alert('Failed to send message. Please try again.');
     }
   });
-};
-
-// Floating elements animation
-const initFloatingElements = () => {
-  const floatingElements = document.querySelectorAll('.floating');
-  
-  floatingElements.forEach(el => {
-    const duration = Math.random() * 3 + 2;
-    const delay = Math.random() * 2;
-    el.style.animation = `float ${duration}s ease-in-out infinite ${delay}s`;
-  });
-};
-
-// Floating animation
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-`;
-document.head.appendChild(style);
+}
