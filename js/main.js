@@ -1,145 +1,125 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Set active navigation link
-  setActiveNavLink();
-  
-  // Initialize smooth scrolling
-  initSmoothScrolling();
-  
-  // Initialize animations
-  initAnimations();
-  
-  // Initialize contact form
+  // Initialize all functionality
+  initNavigation();
+  initScrollAnimations();
+  initTypewriterEffect();
   initContactForm();
+  initFloatingElements();
 });
 
-// Set active navigation link based on current page
-function setActiveNavLink() {
-  const currentPage = window.location.pathname.split('/').pop();
+// Navigation Controller
+const initNavigation = () => {
   const navLinks = document.querySelectorAll('nav a');
   
+  // Set active link based on current page
+  const currentPage = location.pathname.split('/').pop().split('.')[0] || 'index';
   navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPage) {
+    const linkPage = link.getAttribute('href').split('.')[0];
+    if (linkPage === currentPage) {
       link.classList.add('active');
     }
   });
-}
+};
 
-// Smooth scrolling for anchor links
-function initSmoothScrolling() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-}
-
-// Simple animations for project cards
-function initAnimations() {
+// Scroll Animations
+const initScrollAnimations = () => {
   const animateOnScroll = () => {
-    const projectArticles = document.querySelectorAll('article');
+    const elements = document.querySelectorAll('section, article');
     const windowHeight = window.innerHeight;
     
-    projectArticles.forEach((article, index) => {
-      const articlePosition = article.getBoundingClientRect().top;
+    elements.forEach(el => {
+      const elementPosition = el.getBoundingClientRect().top;
       const animationPoint = windowHeight - 100;
       
-      if (articlePosition < animationPoint) {
-        setTimeout(() => {
-          article.style.opacity = '1';
-          article.style.transform = 'translateY(0)';
-        }, index * 150);
+      if (elementPosition < animationPoint) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
       }
     });
   };
   
   // Set initial state
-  document.querySelectorAll('article').forEach(article => {
-    article.style.opacity = '0';
-    article.style.transform = 'translateY(20px)';
-    article.style.transition = 'all 0.5s ease-out';
+  document.querySelectorAll('section, article').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.6s ease-out';
   });
   
   // Run on load and scroll
   animateOnScroll();
   window.addEventListener('scroll', animateOnScroll);
-}
+};
 
-// Contact form handling
-function initContactForm() {
+// Typewriter Effect for Hero Text
+const initTypewriterEffect = () => {
+  const heroText = document.querySelector('.hero p');
+  if (!heroText) return;
+  
+  const text = heroText.textContent;
+  heroText.textContent = '';
+  
+  let i = 0;
+  const type = () => {
+    if (i < text.length) {
+      heroText.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, Math.random() * 50 + 50);
+    }
+  };
+  
+  setTimeout(type, 500);
+};
+
+// Contact Form Handling
+const initContactForm = () => {
   const contactForm = document.querySelector('form');
   if (!contactForm) return;
   
-  contactForm.addEventListener('submit', function(e) {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const formData = new FormData(this);
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.textContent;
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.textContent;
     
-    // Show loading state
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending...';
-    
-    // Simulate form submission (replace with actual fetch in production)
-    setTimeout(() => {
+    try {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       // Show success message
-      const successMessage = document.createElement('div');
-      successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-      successMessage.style.marginTop = '1rem';
-      successMessage.style.color = 'green';
-      
-      contactForm.appendChild(successMessage);
-      
-      // Reset form
-      contactForm.reset();
-      submitButton.disabled = false;
-      submitButton.textContent = originalButtonText;
-      
-      // Remove success message after 5 seconds
-      setTimeout(() => {
-        successMessage.remove();
-      }, 5000);
-    }, 1500);
-  });
-}
-
-// Update active nav link on scroll
-function updateActiveNavLink() {
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('nav a');
-  let currentSection = '';
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
-    if (window.scrollY >= sectionTop - 100 && 
-        window.scrollY < sectionTop + sectionHeight - 100) {
-      currentSection = section.id;
+      contactForm.innerHTML = `
+        <div class="form-success">
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. I'll get back to you soon.</p>
+        </div>
+      `;
+    } catch (error) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+      alert('Failed to send message. Please try again.');
     }
   });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${currentSection}`) {
-      link.classList.add('active');
-    }
-  });
-}
+};
 
-// Initialize on load
-window.addEventListener('load', () => {
-  // Update active nav link on scroll
-  window.addEventListener('scroll', updateActiveNavLink);
-});
+// Floating elements animation
+const initFloatingElements = () => {
+  const floatingElements = document.querySelectorAll('.floating');
+  
+  floatingElements.forEach(el => {
+    const duration = Math.random() * 3 + 2;
+    const delay = Math.random() * 2;
+    el.style.animation = `float ${duration}s ease-in-out infinite ${delay}s`;
+  });
+};
+
+// Floating animation
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+`;
+document.head.appendChild(style);
