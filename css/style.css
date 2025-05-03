@@ -4,8 +4,8 @@
   --primary-light: #7a6ff5; /* Lighter purple */
   --dark: #2d3436;          /* Dark text */
   --light: #f8f9fa;         /* Off-white background */
-  --light-gray: #e9ecef;    /* Soft gray */
   --text: #495057;          /* Dark gray text */
+  --white: #ffffff;         /* Pure white */
 }
 
 /* Base Styles */
@@ -18,7 +18,7 @@ body {
   padding: 0;
 }
 
-/* Fixed Navigation */
+/* Fixed Navigation - Consistent Across All Pages */
 header {
   background-color: var(--primary);
   padding: 0.8rem 1.5rem;
@@ -35,59 +35,45 @@ nav {
   align-items: center;
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 1rem; /* Added padding to prevent edge sticking */
 }
 
-/* Fixed: Name color in header */
+/* Fixed: Name color remains white on all pages */
 .logo {
   font-size: 1.3rem;
   font-weight: 600;
-  color: white; /* Always white now */
+  color: var(--white) !important; /* Forces white color everywhere */
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+/* Tightened Navigation Spacing */
 nav ul {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem; /* Reduced from 2rem */
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 nav a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
   font-size: 0.9rem;
-  padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0;
   position: relative;
   transition: all 0.3s;
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: white;
-  transition: width 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* Softer Background */
+/* Main Content Area - Fixed Spacing */
 main {
   margin-top: 70px;
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 2rem 1.5rem; /* Reduced side padding */
+  max-width: 1000px; /* Narrower content area */
   margin-left: auto;
   margin-right: auto;
-  background-color: var(--light);
 }
 
-/* Hero Section */
+/* Hero Section - Better Spacing */
 .hero {
   min-height: calc(100vh - 70px);
   display: flex;
@@ -95,78 +81,28 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1rem; /* Tighter padding */
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+/* Project Cards - Better Spacing */
+.project-card {
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, var(--primary), var(--primary-light));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
-  color: var(--text);
-}
-
-/* Buttons */
-.hero-buttons {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.hero-btn {
-  padding: 0.8rem 1.8rem;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(90, 79, 207, 0.3);
-}
-
-.hero-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(90, 79, 207, 0.4);
-}
-
-/* Card Styles */
-.card {
-  background: white;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  margin-bottom: 2rem;
 }
 
-/* Responsive Design */
+/* Contact Page - Better Spacing */
+.contact-info {
+  padding: 1.5rem;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  header {
-    padding: 0.7rem 1rem;
-  }
-  
-  .logo {
-    font-size: 1.1rem;
-  }
-  
   nav ul {
-    gap: 0.7rem;
+    gap: 1rem;
   }
   
-  .hero-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .hero-btn {
-    width: 100%;
-    text-align: center;
+  main {
+    padding: 2rem 1rem;
   }
 }
 
@@ -178,5 +114,10 @@ main {
   
   nav ul {
     margin-top: 0.5rem;
+    gap: 0.8rem;
+  }
+  
+  .logo {
+    margin-bottom: 0.5rem;
   }
 }
