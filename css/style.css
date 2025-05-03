@@ -1,123 +1,133 @@
-/* Modern Color Palette */
-:root {
-  --primary: #5a4fcf;       /* Primary purple */
-  --primary-light: #7a6ff5; /* Lighter purple */
-  --dark: #2d3436;          /* Dark text */
-  --light: #f8f9fa;         /* Off-white background */
-  --text: #495057;          /* Dark gray text */
-  --white: #ffffff;         /* Pure white */
-}
-
-/* Base Styles */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--light);
-  color: var(--text);
-  line-height: 1.6;
+/* Reset and Base Styles */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Fixed Navigation - Consistent Across All Pages */
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Navigation Styles */
 header {
-  background-color: var(--primary);
-  padding: 0.8rem 1.5rem;
+  background-color: #5a4fcf;
+  padding: 1rem 2rem;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem; /* Added padding to prevent edge sticking */
 }
 
-/* Fixed: Name color remains white on all pages */
 .logo {
-  font-size: 1.3rem;
+  color: white;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--white) !important; /* Forces white color everywhere */
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-/* Tightened Navigation Spacing */
-nav ul {
+.nav-links {
   display: flex;
-  gap: 1.2rem; /* Reduced from 2rem */
+  gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-nav a {
-  color: var(--white);
+.nav-links a {
+  color: white;
   text-decoration: none;
-  font-size: 0.9rem;
-  padding: 0.3rem 0;
+  font-weight: 500;
+  padding: 0.5rem 0;
   position: relative;
-  transition: all 0.3s;
 }
 
-/* Main Content Area - Fixed Spacing */
-main {
-  margin-top: 70px;
-  padding: 2rem 1.5rem; /* Reduced side padding */
-  max-width: 1000px; /* Narrower content area */
-  margin-left: auto;
-  margin-right: auto;
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s;
 }
 
-/* Hero Section - Better Spacing */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
 .hero {
-  min-height: calc(100vh - 70px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem 1rem; /* Tighter padding */
+  padding: 0 2rem;
+  margin-top: 70px;
 }
 
-/* Project Cards - Better Spacing */
-.project-card {
+.hero h1 {
+  font-size: 3rem;
   margin-bottom: 1.5rem;
-  padding: 1.5rem;
+  color: #2d3436;
 }
 
-/* Contact Page - Better Spacing */
-.contact-info {
-  padding: 1.5rem;
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  color: #495057;
 }
 
-/* Responsive Adjustments */
+/* Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background-color: #5a4fcf;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #4a40bf;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  nav ul {
+  .nav-links {
+    gap: 1.5rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
     gap: 1rem;
   }
   
-  main {
-    padding: 2rem 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  nav ul {
-    margin-top: 0.5rem;
-    gap: 0.8rem;
-  }
-  
-  .logo {
-    margin-bottom: 0.5rem;
+  .btn {
+    width: 200px;
+    text-align: center;
   }
 }
