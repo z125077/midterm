@@ -76,6 +76,14 @@ nav {
   width: 100%;
 }
 
+.nav-links a.active {
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
 /* Main Content */
 main {
   margin-top: 80px;
@@ -144,6 +152,7 @@ h2::after {
   display: flex;
   gap: 1.5rem;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 .btn {

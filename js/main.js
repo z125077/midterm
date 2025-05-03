@@ -17,13 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Set active navigation link based on current page
 function setActiveNavLink() {
-  const currentPage = window.location.pathname.split('/').pop().split('.')[0] || 'index';
+  const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('nav a');
   
   navLinks.forEach(link => {
-    const linkPage = link.getAttribute('href').split('.')[0];
-    if (linkPage === currentPage) {
+    const linkPath = link.getAttribute('href');
+    
+    // Remove .html extension for comparison
+    const cleanCurrentPath = currentPath.replace('.html', '').replace('/', '');
+    const cleanLinkPath = linkPath.replace('.html', '').replace('/', '');
+    
+    // Handle index/home page
+    if ((cleanCurrentPath === '' || cleanCurrentPath === 'index') && 
+        (cleanLinkPath === '' || cleanLinkPath === 'index')) {
       link.classList.add('active');
+      return;
+    }
+    
+    // Handle other pages
+    if (cleanCurrentPath.includes(cleanLinkPath) && cleanLinkPath !== '') {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
     }
   });
 }
