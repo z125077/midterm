@@ -1,11 +1,7 @@
-/* ===== GLOBAL STYLES ===== */
 :root {
-  /* Brand Colors (unchanged) */
   --primary: #5a4fcf;
   --primary-light: #7a6ff5;
   --dark: #2d3436;
-  
-  /* Softened Colors */
   --light: #f0f2f5;
   --light-gray: #e6e9ed;
   --text: #4a4f54;
@@ -20,15 +16,21 @@
 }
 
 body {
-  background-color: var(--bg-soft);
+  font-family: 'Poppins', sans-serif;
+  background: var(--light);
   color: var(--text);
+  line-height: 1.6;
 }
 
-
-/* ===== NAVIGATION ===== */
+/* Navigation */
 header {
-  background: var(--white);
-  border-bottom: 1px solid var(--light-gray);
+  background: var(--primary);
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav {
@@ -74,7 +76,7 @@ nav {
   width: 100%;
 }
 
-/* ===== MAIN CONTENT ===== */
+/* Main Content */
 main {
   margin-top: 80px;
 }
@@ -89,6 +91,7 @@ section {
   padding: 4rem 0;
 }
 
+/* Typography */
 h1 {
   font-size: 2.5rem;
   color: var(--dark);
@@ -112,27 +115,7 @@ h2::after {
   background: var(--primary);
 }
 
-/* ===== BUTTONS ===== */
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-  background: var(--primary);
-  color: var(--white);
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: var(--primary-light);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(90, 79, 207, 0.3);
-}
-
-/* ===== HERO SECTION ===== */
+/* Hero Section */
 .hero {
   min-height: calc(100vh - 80px);
   display: flex;
@@ -156,56 +139,62 @@ h2::after {
   margin: 0 auto 2rem;
 }
 
+/* Buttons */
 .cta-buttons {
   display: flex;
   gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-/* ===== ABOUT SECTION ===== */
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
+.btn:hover {
+  background: var(--primary-light);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(90, 79, 207, 0.3);
 }
 
-.skill-category {
+/* Projects Section */
+.projects-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-item {
   background: var(--white);
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
 }
 
-/* ===== PROJECTS SECTION ===== */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+.project-title {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
 }
 
-.project-card {
-  background: var(--white);
-  border: 1px solid var(--light-gray);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
+.project-description {
+  margin-bottom: 1.5rem;
 }
 
 .tech-tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  list-style: none;
   margin-top: 1rem;
 }
 
-.tech-tags li {
+.tech-tag {
   background: rgba(90, 79, 207, 0.1);
   color: var(--primary);
   padding: 0.25rem 0.75rem;
@@ -213,46 +202,8 @@ h2::after {
   font-size: 0.8rem;
 }
 
-/* ===== CONTACT SECTION ===== */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: 'Poppins', sans-serif;
-}
-
-.form-group textarea {
-  min-height: 150px;
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .about-content,
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-  
   .nav-links {
     gap: 1rem;
   }
@@ -263,6 +214,12 @@ h2::after {
   
   .cta-buttons {
     flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
   }
 }
 
