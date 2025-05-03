@@ -9,8 +9,8 @@
 <body>
   <header>
     <nav>
-      <h1>Riya Chauhan</h1>
-      <ul>
+      <div class="logo">Riya Chauhan</div>
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -20,46 +20,47 @@
   </header>
 
   <main>
-    <section>
+    <section class="container">
       <h2>My Projects</h2>
-      
-      <article>
-        <h3>Sentiment Analysis Program</h3>
-        <p>Built an AI model to analyze and categorize customer reviews based on sentiment using NLP techniques.</p>
-        <ul>
-          <li>Python</li>
-          <li>NLP</li>
-          <li>Scikit-learn</li>
-        </ul>
-      </article>
-      
-      <article>
-        <h3>Procurement and Ordering System</h3>
-        <p>Engineered a scalable system for order requisition and vendor management with Django backend.</p>
-        <ul>
-          <li>Python</li>
-          <li>Django</li>
-          <li>SQL</li>
-        </ul>
-      </article>
-      
-      <article>
-        <h3>A* Path Visualization</h3>
-        <p>Developed a visualization tool for the A* Pathfinding Algorithm to demonstrate shortest path optimization.</p>
-        <ul>
-          <li>Java</li>
-          <li>Algorithms</li>
-        </ul>
-      </article>
-      
-      <article>
-        <h3>Monthly Budget Manager</h3>
-        <p>Designed an application for personal budget management with expense categorization and reporting.</p>
-        <ul>
-          <li>Java</li>
-          <li>OOP</li>
-        </ul>
-      </article>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Sentiment Analysis Program</h3>
+          <p>Built an AI model to analyze and categorize customer reviews based on sentiment using NLP techniques.</p>
+          <ul class="tech-tags">
+            <li>Python</li>
+            <li>NLP</li>
+            <li>Scikit-learn</li>
+          </ul>
+        </div>
+        
+        <div class="project-card">
+          <h3>Procurement and Ordering System</h3>
+          <p>Engineered a scalable system for order requisition and vendor management with Django backend.</p>
+          <ul class="tech-tags">
+            <li>Python</li>
+            <li>Django</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+        
+        <div class="project-card">
+          <h3>A* Path Visualization</h3>
+          <p>Developed a visualization tool for the A* Pathfinding Algorithm to demonstrate shortest path optimization.</p>
+          <ul class="tech-tags">
+            <li>Java</li>
+            <li>Algorithms</li>
+          </ul>
+        </div>
+        
+        <div class="project-card">
+          <h3>Monthly Budget Manager</h3>
+          <p>Designed an application for personal budget management with expense categorization and reporting.</p>
+          <ul class="tech-tags">
+            <li>Java</li>
+            <li>OOP</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 </body>
