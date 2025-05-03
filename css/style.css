@@ -162,120 +162,44 @@ h2::after {
   gap: 1.5rem;
 }
 
-/* ===== ABOUT SECTION ===== */
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.skill-category {
-  background: var(--white);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* ===== PROJECTS SECTION ===== */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.project-card {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-}
-
-.tech-tags {
-  display: flex;
-  gap: 0.5rem;
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.tech-tags li {
-  background: rgba(90, 79, 207, 0.1);
-  color: var(--primary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-}
-
-/* ===== CONTACT SECTION ===== */
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-}
-
-.form-group input,
-.form-group textarea {
+/* ===== WAVE ANIMATION ===== */
+.wave-container {
+  position: relative;
   width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: 'Poppins', sans-serif;
+  height: 200px;
+  overflow: hidden;
 }
 
-.form-group textarea {
-  min-height: 150px;
+.wave1, .wave2, .wave3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-repeat: repeat-x;
+  animation: wave-animation 10s linear infinite;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
-  .about-content,
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-  
-  .nav-links {
-    gap: 1rem;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-  }
+.wave1 {
+  background: url('images/wave1.png') repeat-x;
+  animation-duration: 10s;
 }
 
-@media (max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
+.wave2 {
+  background: url('images/wave2.png') repeat-x;
+  animation-duration: 12s;
+}
+
+.wave3 {
+  background: url('images/wave3.png') repeat-x;
+  animation-duration: 15s;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0);
   }
-  
-  .nav-links {
-    margin-top: 1rem;
+  100% {
+    transform: translateX(-100%);
   }
 }
