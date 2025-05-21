@@ -17,9 +17,15 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: var(--light);
+  background-image: url('Background_Image_HOME_edited.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
   color: var(--text);
   line-height: 1.6;
+}
 }
 
 /* Navigation */
