@@ -166,7 +166,7 @@ h2::after {
 
 .hero h1 {
   font-size: 3rem;
-  background: linear-gradient(90deg, var(--white), #e0e0e0); /* Changed to white gradient */
+  background: linear-gradient(90deg, var(--white), #e0e0e0); 
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -176,7 +176,7 @@ h2::after {
 
 .hero p {
   font-size: 1.3rem;
-  color: var(--light); /* Changed to light color for better contrast */
+  color: var(--light); 
   margin-bottom: 2.5rem;
   font-weight: 400;
   opacity: 0.9;
