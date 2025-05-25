@@ -501,14 +501,8 @@ h2::after {
   transform: translateY(-2px);
 }
 
-/* =====================
-   AI INTERACTIVE BACKGROUND 
-   ===================== */
-body {
-  position: relative;
-  overflow-x: hidden;
-}
 
+/* AI Interactive Background */
 .ai-bg-canvas {
   position: fixed;
   top: 0;
@@ -516,101 +510,154 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.6;
   pointer-events: none;
 }
 
-/* =====================
-   NEURAL NETWORK VISUALIZATION 
-   ===================== */
+/* Neural Network Container */
 .neural-network-container {
   width: 100%;
   max-width: 800px;
   margin: 3rem auto;
-  padding: 2rem;
-  background: rgba(255,255,255,0.9);
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.96);
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 40px rgba(90, 79, 207, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
+.neural-network-container::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    transparent 48%,
+    rgba(122, 111, 245, 0.03) 50%,
+    transparent 52%
+  );
+  transform: rotate(30deg);
+  animation: hologramFlow 6s linear infinite;
+}
+
+@keyframes hologramFlow {
+  0% { transform: rotate(30deg) translateY(0); }
+  100% { transform: rotate(30deg) translateY(-50%); }
+}
+
+/* Neural Network SVG */
 .neural-network {
   width: 100%;
-  height: 300px;
+  height: 350px;
+  filter: drop-shadow(0 5px 15px rgba(90,79,207,0.1));
 }
 
+/* Nodes */
 .neural-node {
-  fill: var(--primary-light);
-  stroke: var(--white);
-  stroke-width: 2;
-  transition: all 0.3s ease;
+  stroke-width: 2.5px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.neural-node.input-node { fill: var(--primary); }
-.neural-node.hidden-node { fill: var(--primary-light); }
-.neural-node.output-node { fill: #ff6b6b; }
+.neural-node.input-node { 
+  fill: var(--primary);
+  filter: drop-shadow(0 0 8px rgba(90, 79, 207, 0.4)); 
+}
+
+.neural-node.hidden-node { 
+  fill: var(--primary-light);
+  filter: drop-shadow(0 0 8px rgba(122, 111, 245, 0.4)); 
+}
+
+.neural-node.output-node { 
+  fill: #ff6b6b;
+  filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.3)); 
+}
 
 .neural-node:hover {
-  filter: drop-shadow(0 0 8px currentColor);
-  transform: scale(1.15);
+  transform: scale(1.25);
 }
 
+/* Connections */
 .neural-connection {
-  stroke: rgba(90, 79, 207, 0.3);
-  stroke-width: 2;
+  stroke-width: 2px;
+  stroke-linecap: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
 }
 
+.active-connection {
+  stroke: url(#connection-gradient);
+  stroke-width: 3px;
+  animation: pulseGlow 1.2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; stroke-width: 3px; }
+  50% { opacity: 1; stroke-width: 4px; }
+}
+
+/* Controls */
 .neural-controls {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .neural-btn {
   background: var(--primary);
   color: var(--white);
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 4px;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.3s;
-  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 10px rgba(90, 79, 207, 0.2);
 }
 
 .neural-btn:hover {
   background: var(--primary-light);
   transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(90, 79, 207, 0.3);
 }
 
-@keyframes draw {
-  to { stroke-dashoffset: 0; }
+/* Skill Labels */
+.skill-label {
+  font-size: 0.85rem;
+  fill: var(--text);
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.neural-node:hover + .skill-label {
+  opacity: 1;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .neural-network-container {
-    padding: 1.5rem;
+    padding: 1.8rem;
   }
   
   .neural-network {
-    height: 250px;
-  }
-  
-  .neural-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    height: 280px;
   }
 }
 
 @media (max-width: 576px) {
   .neural-network {
-    height: 200px;
+    height: 220px;
   }
   
   .neural-controls {
     flex-direction: column;
-    align-items: center;
+  }
+  
+  .neural-btn {
+    width: 100%;
   }
 }
