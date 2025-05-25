@@ -428,3 +428,67 @@ h2::after {
     height: 180px;
   }
 }
+/* =====================
+   CONTACT PAGE STYLES 
+   ===================== */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.contact-container h2 {
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--light-gray);
+  border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.send-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.send-btn:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
