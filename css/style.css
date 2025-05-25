@@ -49,7 +49,7 @@ nav {
   color: var(--white);
   font-size: 1.5rem;
   font-weight: 600;
-  margin-right: auto; /* Pushes nav items to the right */
+  margin-right: auto;
 }
 
 .nav-links {
@@ -108,13 +108,13 @@ section {
 /* Typography */
 h1 {
   font-size: 2.5rem;
-  color: var(--white); /* Changed to white for better contrast */
+  color: var(--white);
   margin-bottom: 1.5rem;
 }
 
 h2 {
   font-size: 2rem;
-  color: var(--dark);
+  color: var(--white);
   margin-bottom: 1.5rem;
   position: relative;
 }
@@ -126,16 +126,16 @@ h2::after {
   left: 0;
   width: 60px;
   height: 4px;
-  background: var(--primary);
+  background: var(--primary-light);
 }
 
-/* Redesigned Hero Section with Image */
+/* Hero Section */
 .hero {
   min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: left; /* Changed from center */
+  text-align: left;
 }
 
 .hero-content {
@@ -166,7 +166,7 @@ h2::after {
 
 .hero h1 {
   font-size: 3rem;
-  background: linear-gradient(90deg, var(--white), #e0e0e0); 
+  background: linear-gradient(90deg, var(--white), #e0e0e0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -176,7 +176,7 @@ h2::after {
 
 .hero p {
   font-size: 1.3rem;
-  color: var(--light); 
+  color: var(--light);
   margin-bottom: 2.5rem;
   font-weight: 400;
   opacity: 0.9;
@@ -220,6 +220,142 @@ h2::after {
   color: var(--primary);
 }
 
+/* =====================
+   ABOUT PAGE STYLES 
+   ===================== */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.about-section, .skills-section {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-section h3, .skills-section h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-section p {
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.info-card {
+  background: rgba(245, 247, 251, 0.8);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin-top: 2rem;
+}
+
+.info-card h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.info-list li {
+  color: var(--text);
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.info-list li::before {
+  content: "•";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.skill-category {
+  background: rgba(245, 247, 251, 0.8);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.skill-category h4 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.skill-list {
+  list-style: none;
+}
+
+.skill-list li {
+  color: var(--text);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(230, 233, 237, 0.5);
+}
+
+/* =====================
+   PROJECTS PAGE STYLES 
+   ===================== */
+.projects-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-item {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-title {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.tech-tag {
+  background: rgba(90, 79, 207, 0.1);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(90, 79, 207, 0.2);
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
   .hero-content {
@@ -235,6 +371,10 @@ h2::after {
   
   .hero-text {
     max-width: 100%;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -259,6 +399,14 @@ h2::after {
   .btn {
     width: 100%;
     text-align: center;
+  }
+  
+  .about-section, .skills-section, .project-item {
+    padding: 1.8rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
   }
 }
 
