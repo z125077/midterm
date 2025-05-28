@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="/site.webmanifest">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="/site.webmanifest" />
   <title>About | Riya Chauhan</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
@@ -29,22 +29,26 @@
 
       <div class="about-content">
         <!-- Personal Info Section -->
-        <div class="about-section">
+        <div class="about-section reveal">
           <h3>Computer Science Engineering Student | AI & ML</h3>
-          <p>Aspiring Software Engineer with hands-on experience in Machine Learning, Backend Development, and Cloud Computing. Passionate about building intelligent systems and streamlining operations through data-driven solutions.</p>
+          <p>
+            Aspiring Software Engineer with hands-on experience in Machine Learning,
+            Backend Development, and Cloud Computing. Passionate about building
+            intelligent systems and streamlining operations through data-driven solutions.
+          </p>
 
           <div class="info-card">
             <h4>Personal Information</h4>
             <ul class="info-list">
-              <li><span><strong>Education:</strong> Bachelor's in Technology in Computer Science Engineering (AI & ML)</span></li>
-              <li><span><strong>Interests:</strong> Machine Learning, Backend Development, Cloud Computing</span></li>
-              <li><span><strong>Hobbies:</strong> Dancing, Listening to music, Traveling</span></li>
+              <li><strong>Education:</strong> Bachelor's in Technology in Computer Science Engineering (AI & ML)</li>
+              <li><strong>Interests:</strong> Machine Learning, Backend Development, Cloud Computing</li>
+              <li><strong>Hobbies:</strong> Dancing, Listening to music, Traveling</li>
             </ul>
           </div>
         </div>
 
         <!-- Skills Section -->
-        <div class="skills-section">
+        <div class="skills-section reveal">
           <h3>Technical Skills</h3>
 
           <div class="skills-grid">
@@ -81,7 +85,7 @@
         </div>
       </div>
 
-      <div class="certifications-section">
+      <div class="certifications-section reveal">
         <h3>Certifications</h3>
         <div class="certifications-grid">
           <div class="certification-card">
@@ -96,6 +100,29 @@
       </div>
     </section>
   </main>
+
   <script src="js/main.js"></script>
+  <script>
+    // Reveal Sections on Scroll
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+
+      for (const reveal of reveals) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveal.getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if (revealTop < windowHeight - revealPoint) {
+          reveal.classList.add('active');
+        } else {
+          reveal.classList.remove('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
 </body>
 </html>
+

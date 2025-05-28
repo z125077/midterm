@@ -244,6 +244,18 @@ h2::after {
 /* =====================
    ABOUT PAGE STYLES 
    ===================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
