@@ -52,17 +52,26 @@ nav {
   white-space: nowrap;
 }
 
-.full-name {
-  display: none; /* Hide by default (mobile) */
+.short-name {
+  display: inline;
 }
 
-/* Show on screens wider than 768px (laptop/tablet) */
+.full-name {
+  display: none;
+}
+
+/* Show full name on screens 768px and wider */
 @media screen and (min-width: 768px) {
+  .short-name {
+    display: none;
+  }
+
   .full-name {
     display: inline;
-    margin-left: 5px;
+    margin-left: 0.3rem;
   }
 }
+
 
 .nav-links {
   display: flex;
