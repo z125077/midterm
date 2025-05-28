@@ -52,10 +52,15 @@ nav {
   white-space: nowrap;
 }
 
-@media (min-width: 768px) {
-  .logo::after {
-    content: " Riya Chauhan";
+.full-name {
+  display: none; /* Hide by default (mobile) */
+}
+
+/* Show on screens wider than 768px (laptop/tablet) */
+@media screen and (min-width: 768px) {
+  .full-name {
     display: inline;
+    margin-left: 5px;
   }
 }
 
