@@ -63,39 +63,39 @@
       display: inline-block;
     }
 
-    .hero-text h1,
-    .hero-text p {
-      font-family: 'Poppins', sans-serif;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid var(--accent-color);
-      margin: 0 auto;
-      display: inline-block;
-    }
+.hero-text h1,
+.hero-text p {
+  overflow: hidden;
+  border-right: 2px solid var(--accent-color);
+  margin: 0 auto;
+  display: inline-block;
+  white-space: normal;
+}
 
-    .hero-text h1 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      animation: typingH1 2.8s steps(29, end) 1s forwards, blink 0.7s step-end 6;
-      width: 20ch;
-    }
+.hero-text h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  max-width: 0;
+  animation: typingH1 2.8s steps(29, end) 1s forwards, blink 0.7s step-end 6;
+}
 
-    .hero-text p {
-      font-size: 1.2rem;
-      font-weight: 400;
-      animation: typingP 4s steps(70, end) 4.5s forwards, blink 0.7s step-end 6;
-      width: 70ch;
-    }
+.hero-text p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  max-width: 0;
+  animation: typingP 4s steps(70, end) 4.5s forwards, blink 0.7s step-end 6;
+}
 
-    @keyframes typingH1 {
-      from { width: 0; }
-      to { width: 20ch; }
-    }
+@keyframes typingH1 {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
 
-    @keyframes typingP {
-      from { width: 0; }
-      to { width: 70ch; }
-    }
+@keyframes typingP {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
 
     @keyframes blink {
       50% { border-color: transparent; }
