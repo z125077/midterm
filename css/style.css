@@ -480,7 +480,7 @@ h2::after {
 }
 
 .form-group label {
-  color: var(--dark);
+  color: var(--white);
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
