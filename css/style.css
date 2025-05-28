@@ -506,34 +506,6 @@ h2::after {
   transform: translateY(-2px);
 }
 
-/* Neural Network Container */
-.neural-network-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 2.5rem;
-  background: rgba(255,255,255,0.96);
-  border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(90, 79, 207, 0.15);
-  position: relative;
-  overflow: hidden;
-}
-
-.neural-network-container::before {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    transparent 48%,
-    rgba(122, 111, 245, 0.03) 50%,
-    transparent 52%
-  );
-  transform: rotate(30deg);
-  animation: hologramFlow 6s linear infinite;
-}
-
 @keyframes hologramFlow {
   0% { transform: rotate(30deg) translateY(0); }
   100% { transform: rotate(30deg) translateY(-50%); }
