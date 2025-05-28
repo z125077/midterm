@@ -501,19 +501,6 @@ h2::after {
   transform: translateY(-2px);
 }
 
-
-/* AI Interactive Background */
-.ai-bg-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
 /* Neural Network Container */
 .neural-network-container {
   width: 100%;
@@ -660,4 +647,32 @@ h2::after {
   .neural-btn {
     width: 100%;
   }
+}
+
+.certifications-section {
+  background: rgba(255,255,255,0.9);
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.certification-card {
+  background: var(--bg-soft);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  display: inline-block;
 }
