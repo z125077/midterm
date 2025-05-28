@@ -49,14 +49,13 @@ nav {
   font-size: 1.5rem;
   font-weight: 600;
   margin-right: auto;
-  white-space: nowrap; 
+  white-space: nowrap;
+}
 
-/* For desktop */
-  @media (min-width: 768px) {
-    .logo::after {
-      content: " Riya Chauhan";
-      display: inline;
-    }
+@media (min-width: 768px) {
+  .logo::after {
+    content: " Riya Chauhan";
+    display: inline;
   }
 }
 
@@ -534,120 +533,6 @@ h2::after {
   100% { transform: rotate(30deg) translateY(-50%); }
 }
 
-/* Neural Network SVG */
-.neural-network {
-  width: 100%;
-  height: 350px;
-  filter: drop-shadow(0 5px 15px rgba(90,79,207,0.1));
-}
-
-/* Nodes */
-.neural-node {
-  stroke-width: 2.5px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.neural-node.input-node { 
-  fill: var(--primary);
-  filter: drop-shadow(0 0 8px rgba(90, 79, 207, 0.4)); 
-}
-
-.neural-node.hidden-node { 
-  fill: var(--primary-light);
-  filter: drop-shadow(0 0 8px rgba(122, 111, 245, 0.4)); 
-}
-
-.neural-node.output-node { 
-  fill: #ff6b6b;
-  filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.3)); 
-}
-
-.neural-node:hover {
-  transform: scale(1.25);
-}
-
-/* Connections */
-.neural-connection {
-  stroke-width: 2px;
-  stroke-linecap: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-}
-
-.active-connection {
-  stroke: url(#connection-gradient);
-  stroke-width: 3px;
-  animation: pulseGlow 1.2s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.8; stroke-width: 3px; }
-  50% { opacity: 1; stroke-width: 4px; }
-}
-
-/* Controls */
-.neural-controls {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.neural-btn {
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s;
-  box-shadow: 0 4px 10px rgba(90, 79, 207, 0.2);
-}
-
-.neural-btn:hover {
-  background: var(--primary-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(90, 79, 207, 0.3);
-}
-
-/* Skill Labels */
-.skill-label {
-  font-size: 0.85rem;
-  fill: var(--text);
-  font-weight: 500;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.neural-node:hover + .skill-label {
-  opacity: 1;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .neural-network-container {
-    padding: 1.8rem;
-  }
-  
-  .neural-network {
-    height: 280px;
-  }
-}
-
-@media (max-width: 576px) {
-  .neural-network {
-    height: 220px;
-  }
-  
-  .neural-controls {
-    flex-direction: column;
-  }
-  
-  .neural-btn {
-    width: 100%;
-  }
-}
 
 .certifications-section {
   background: rgba(255,255,255,0.9);
