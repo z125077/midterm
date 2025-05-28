@@ -503,6 +503,7 @@ h2::after {
   background: var(--primary);
   color: white;
   border: none;
+  margin-top: 1rem;
   padding: 1.5rem;
   border-radius: 6px;
   font-weight: 600;
