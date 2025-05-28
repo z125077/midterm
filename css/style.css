@@ -440,6 +440,7 @@ h2::after {
     height: 180px;
   }
 }
+
 /* =====================
    CONTACT PAGE STYLES 
    ===================== */
@@ -470,7 +471,7 @@ h2::after {
 }
 
 .form-group label {
-  color: var(--primary);
+  color: var(--dark);
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
@@ -493,7 +494,7 @@ h2::after {
   background: var(--primary);
   color: white;
   border: none;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
